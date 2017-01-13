@@ -34,12 +34,16 @@ public class ToDoItem: MySQLStORM {
         completed = 1
     }
     
-    func markNotComplete() {
+    func markIncomplete() {
         completed = 0
     }
     
     func setDueDate(_ date: Date) {
         due = getSQLDateTime(date)
+    }
+    
+    func removeDueDate() {
+        due = "NULL"
     }
     
     override open func table() -> String { return "todo_items" }
