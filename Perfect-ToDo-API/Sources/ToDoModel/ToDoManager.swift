@@ -11,13 +11,15 @@ import SwiftSQL
 
 public struct ToDoManager {
     
+    public init() {  }
+    
     public func getAll() throws -> [ToDoItem] {
         var items = [ToDoItem]()
         
         let getObj = ToDoItem()
         
         do {
-            try getObj.select(whereclause: "", params: [], orderby: ["id"])
+            try getObj.findAll()
             
             for row in getObj.rows() {
                 items.append(row)
@@ -27,6 +29,38 @@ public struct ToDoManager {
         }
         
         return items
+    }
+    
+    public func get(forID id: Int) throws -> ToDoItem {
+        let obj = ToDoItem()
+        
+        do {
+            try obj.get(id)
+        } catch {
+            throw error
+        }
+        
+        return obj
+    }
+    
+    public func count() throws -> Int {
+        let obj = ToDoItem()
+        var count = 0
+        
+        do {
+            let rows = try obj.sqlRows("SELECT COUNT(*) FROM todo_items", params: [])
+            
+            for row in rows {
+                if let results = row.data["COUNT(*)"] as? Int {
+                    count = results
+                }
+            }
+            
+        } catch {
+            throw error
+        }
+        
+        return count
     }
     
     public func create(item: String, dueDate: Date?) throws -> ToDoItem {
@@ -67,12 +101,11 @@ public struct ToDoManager {
             obj.setDueDate(dueDate!)
         }
         
-//        let objCompletion = obj.isCompleted ? 1: 0
-//        let objDate = obj.dueDate == nil ? "NULL": getSQLDateTime(obj.dueDate!)
+        let objCompletion = obj.isCompleted ? 1: 0
+        let objDate = obj.dueDate == nil ? "NULL": getSQLDateTime(obj.dueDate!)
         
         do {
-//            try obj.update(cols: ["completed", "item", "due"], params: [objCompletion, "\(obj.item)", objDate], idName: "id", idValue: obj.id)
-            try obj.save()
+            try obj.update(cols: ["completed", "item", "due"], params: [objCompletion, "\(obj.item)", objDate], idName: "id", idValue: obj.id)
         } catch {
             throw error
         }

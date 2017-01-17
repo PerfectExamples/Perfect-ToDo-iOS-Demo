@@ -49,7 +49,7 @@ public class ToDoItem: MySQLStORM {
     override open func table() -> String { return "todo_items" }
     
     override public func to(_ this: StORMRow) {
-        id = this.data["id"] as? Int ?? 0
+        id = Int(this.data["id"] as? Int32 ?? 0)
         item = this.data["item"] as? String ?? "Default"
         completed = this.data["completed"] as? Int ?? 0
         due = this.data["due"] as? String ?? "NULL"

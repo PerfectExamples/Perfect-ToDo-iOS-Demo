@@ -55,7 +55,7 @@ try? tokenStore?.setup()
 var authenticationConfig = AuthenticationConfig()
 authenticationConfig.exclude("/api/v1/login")
 authenticationConfig.exclude("/api/v1/register")
-authenticationConfig.include("/api/v1/check")
+authenticationConfig.include("/api/v1/count")
 
 let authFilter = AuthFilter(authenticationConfig)
 
