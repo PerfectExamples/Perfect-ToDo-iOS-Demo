@@ -16,5 +16,10 @@ class LoginVC: UIViewController {
         DataService.instance.load()
     }
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        get {
+            return .lightContent
+        }
+    }
 
 }
