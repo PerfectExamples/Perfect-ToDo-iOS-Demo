@@ -10,6 +10,10 @@ import UIKit
 
 class AddVC: UIViewController {
 
+    @IBOutlet weak var itemField: UITextField!
+    @IBOutlet weak var dueDateSwitch: UISwitch!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,4 +26,20 @@ class AddVC: UIViewController {
         }
     }
 
+    @IBAction func dueDateSwitchPressed(_ sender: UISwitch) {
+        if sender.isOn {
+            datePicker.isHidden = false
+        } else {
+            datePicker.isHidden = true
+        }
+    }
+    
+    @IBAction func cancel(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func add(_ sender: Any) {
+        
+    }
 }

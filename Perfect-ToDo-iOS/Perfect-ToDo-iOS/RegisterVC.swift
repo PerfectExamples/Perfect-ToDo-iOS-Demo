@@ -10,10 +10,15 @@ import UIKit
 
 class RegisterVC: UIViewController {
 
+    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var passwordVerificationField: UITextField!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        activityIndicator.isHidden = true
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -21,5 +26,24 @@ class RegisterVC: UIViewController {
             return .lightContent
         }
     }
+    
+    func setStateRegistering() {
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+    }
+    
+    func setStateStopped() {
+        activityIndicator.isHidden = true
+        activityIndicator.stopAnimating()
+    }
 
+    @IBAction func cancel(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func register(_ sender: Any) {
+        setStateRegistering()
+        
+        
+    }
 }
