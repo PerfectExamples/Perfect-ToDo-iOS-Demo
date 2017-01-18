@@ -8,7 +8,7 @@
 
 import Foundation
 
-class User {
+class RemoteUser {
     private var _username: String
     private var _password: String
     private var _currentToken: String?

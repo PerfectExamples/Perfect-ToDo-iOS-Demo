@@ -13,7 +13,7 @@ class DataService {
     static let instance = DataService()
 
     fileprivate var _loadedItems = [ToDoItem]()
-    fileprivate var _currentUser: User?
+    fileprivate var _currentUser: RemoteUser?
     
     var loadedItems: [ToDoItem] {
         get {
