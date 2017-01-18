@@ -51,11 +51,15 @@ try? auth.setup()
 tokenStore = AccessTokenStore()
 try? tokenStore?.setup()
 
-// add routes to be checked for auth or excluded from check
+// add routes to be excluded from auth check
 var authenticationConfig = AuthenticationConfig()
 authenticationConfig.exclude("/api/v1/login")
 authenticationConfig.exclude("/api/v1/register")
+// add routes to be checked for auth
 authenticationConfig.include("/api/v1/count")
+authenticationConfig.include("/api/v1/get/all")
+authenticationConfig.include("/api/v1/update")
+authenticationConfig.include("/api/v1/delete")
 
 let authFilter = AuthFilter(authenticationConfig)
 

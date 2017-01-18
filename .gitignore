@@ -11,6 +11,7 @@ buildlinux
 Packages
 db/
 *.orig
+StORMlog.txt
 
 #Xcode
 *~.nib
