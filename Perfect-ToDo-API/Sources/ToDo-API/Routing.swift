@@ -24,9 +24,18 @@ struct Router {
         routes.add(method: .get, uri: "/api/v1/count", handler: {
             request, response in
             
+            if let authHeader = request.header(.authorization) {
+                if let token = self.parseToken(fromHeader: authHeader) {
+                    response.setHeader(.contentType, value: "application/json")
+                    response.appendBody(string: Items().count(forToken: token))
+                    response.completed()
+                }
+            }
+            
             response.setHeader(.contentType, value: "application/json")
-            response.appendBody(string: Items().count())
+            response.appendBody(string: "{\"error\": \"failed to count for user\"}")
             response.completed()
+            
         })
         
         routes.add(method: .post, uri: "/api/v1/create", handler: {
@@ -34,24 +43,35 @@ struct Router {
             
             var responder = "{\"Error\"}"
             
-            do {
-                if let json = try request.postBodyString?.jsonDecode() as? [String: String] {
-                    let name = json["item"]
-                    let dueDuate = json["dueDate"]
-                    let date = getDate(fromSQLDate: dueDuate ?? "")
-                    
-                    if let hasName = name {
-                        responder = Items().create(name: hasName, dueDate: date)
+            if let authHeader = request.header(.authorization) {
+                if let token = self.parseToken(fromHeader: authHeader) {
+            
+                    do {
+                        if let json = try request.postBodyString?.jsonDecode() as? [String: String] {
+                            let name = json["item"]
+                            let dueDuate = json["dueDate"]
+                            let date = getDate(fromSQLDate: dueDuate ?? "")
+                            
+                            if let hasName = name {
+                                responder = Items().create(name: hasName, dueDate: date, forToken: token)
+                            }
+                        }
+                        
+                    } catch {
+                        responder = "{\"error\": \"Failed to create\"}"
                     }
+                    
+                    response.setHeader(.contentType, value: "application/json")
+                    response.appendBody(string: responder)
+                    response.completed()
+                    
                 }
-                
-            } catch {
-                responder = "{\"error\": \"Failed to create\"}"
             }
             
             response.setHeader(.contentType, value: "application/json")
-            response.appendBody(string: responder)
+            response.appendBody(string: "{\"error\": \"failed to create for user\"}")
             response.completed()
+            
         })
         
         routes.add(method: .post, uri: "/api/v1/update", handler: {
@@ -109,12 +129,35 @@ struct Router {
         routes.add(method: .get, uri: "/api/v1/get/all", handler: {
             request, response in
             
+            var responder = "{\"error\"}"
+            
+            if let authHeader = request.header(.authorization) {
+                if let token = self.parseToken(fromHeader: authHeader) {
+                    
+                    responder = Items().getAll(forToken: token)
+                    
+                    response.setHeader(.contentType, value: "application/json")
+                    response.appendBody(string: responder)
+                    response.completed()
+                }
+            }
+            
             response.setHeader(.contentType, value: "application/json")
-            response.appendBody(string: Items().getAll())
+            response.appendBody(string: "{\"error\": \"failed to get the items for user\"}")
             response.completed()
         })
         
         return routes
+        
+    }
+    
+    func parseToken(fromHeader header: String) -> String? {
+        let bearer = "Bearer "
+        if let range = header.range(of: bearer) {
+          return header.replacingCharacters(in: range, with: "")
+        } else {
+            return nil
+        }
         
     }
 }

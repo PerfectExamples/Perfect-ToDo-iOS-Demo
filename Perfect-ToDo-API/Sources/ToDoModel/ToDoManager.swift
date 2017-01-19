@@ -8,18 +8,19 @@
 
 import Foundation
 import SwiftSQL
+import PerfectTurnstileMySQL
 
 public struct ToDoManager {
     
     public init() {  }
     
-    public func getAll() throws -> [ToDoItem] {
+    public func get(forToken token: String) throws -> [ToDoItem] {
         var items = [ToDoItem]()
         
         let getObj = ToDoItem()
         
         do {
-            try getObj.findAll()
+            try getObj.select(whereclause: "associatedUser = ?", params: [token], orderby: ["id"])
             
             for row in getObj.rows() {
                 items.append(row)
@@ -43,12 +44,12 @@ public struct ToDoManager {
         return obj
     }
     
-    public func count() throws -> Int {
+    public func count(forToken token: String) throws -> Int {
         let obj = ToDoItem()
         var count = 0
         
         do {
-            let rows = try obj.sqlRows("SELECT COUNT(*) FROM todo_items", params: [])
+            let rows = try obj.sqlRows("SELECT COUNT(*) FROM todo_items WHERE associatedUser = ?", params: [token])
             
             for row in rows {
                 if let results = row.data["COUNT(*)"] as? Int {
@@ -63,10 +64,17 @@ public struct ToDoManager {
         return count
     }
     
-    public func create(item: String, dueDate: Date?) throws -> ToDoItem {
+    public func create(item: String, dueDate: Date?, forToken token: String) throws -> ToDoItem {
         let obj = ToDoItem()
         
         obj.item = item
+        
+        do {
+            try obj.associatedUser = getUser(forToken: token)
+        } catch {
+            throw error
+        }
+        
         
         if let due = dueDate {
             obj.setDueDate(due)
@@ -124,6 +132,26 @@ public struct ToDoManager {
         }
         
         return deleted
+    }
+    
+    func getUser(forToken token: String) throws -> String {
+        var user = ""
+        
+        let obj = AccessTokenStore()
+        
+        do {
+            let rows = try obj.sqlRows("SELECT userid FROM tokens WHERE token LIKE ?", params: [token])
+            
+            for row in rows {
+                if let results = row.data["userid"] as? String {
+                    user = results
+                }
+            }
+        } catch {
+            throw error
+        }
+        
+        return user
     }
     
 }

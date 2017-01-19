@@ -11,11 +11,11 @@ import ToDoModel
 
 struct Items {
     
-    func count() -> String {
+    func count(forToken token: String) -> String {
         var response = "{\"Error\": \"An Unknown Error Occured\"}"
         
         do {
-            let count = try ToDoManager().count()
+            let count = try ToDoManager().count(forToken: token)
             let data: [String: Any] = ["count": count]
             response = try data.jsonEncodedString()
         } catch {
@@ -25,11 +25,11 @@ struct Items {
         return response
     }
     
-    func create(name: String, dueDate: Date?) -> String {
+    func create(name: String, dueDate: Date?, forToken token: String) -> String {
         var response = "{\"Error\": \"An Unknown Error Occured\"}"
         
         do  {
-            let newItem = try ToDoManager().create(item: name, dueDate: dueDate)
+            let newItem = try ToDoManager().create(item: name, dueDate: dueDate, forToken: token)
             let json: [String: Any] = ["item": "\(newItem.item)", "dueDate": "\(newItem.dueDate)", "id": newItem.id]
             response = try json.jsonEncodedString()
         } catch {
@@ -53,11 +53,11 @@ struct Items {
         return response
     }
     
-    func getAll() -> String {
+    func getAll(forToken token: String) -> String {
         var response = "{\"Error\": \"An Unknown Error Occured\"}"
         
         do {
-            let items = try ToDoManager().getAll()
+            let items = try ToDoManager().get(forToken: token)
             var json: [[String: Any]] = [[String: Any]]()
             for item in items {
                 json.append(["item": "\(item.item)", "dueDate": item.dueDate == nil ? "NULL" : "\(item.dueDate!)", "id": item.id, "completed": item.isCompleted])

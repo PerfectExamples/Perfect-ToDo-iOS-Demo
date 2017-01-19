@@ -17,6 +17,7 @@ public class ToDoItem: MySQLStORM {
     public var item: String = "Default"
     private var due: String = "NULL"
     private var completed: Int = 0
+    public var associatedUser: String = ""
     
     public var dueDate: Date? {
         get {
@@ -53,6 +54,7 @@ public class ToDoItem: MySQLStORM {
         item = this.data["item"] as? String ?? "Default"
         completed = this.data["completed"] as? Int ?? 0
         due = this.data["due"] as? String ?? "NULL"
+        associatedUser = this.data["associatedUser"] as? String ?? ""
     }
     
     func rows() -> [ToDoItem] {
