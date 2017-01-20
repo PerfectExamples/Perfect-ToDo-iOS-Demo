@@ -82,6 +82,9 @@ class LoginVC: UIViewController {
         } else {
             if let email = emailField.text, let pass = passwordField.text {
                 DataService.instance.load(forUsername: email, withPassword: pass)
+                self.emailField.text? = ""
+                self.passwordField.text? = ""
+                updateStateStopped()
             }
         }
     }

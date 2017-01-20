@@ -8,6 +8,7 @@
 
 import Foundation
 import ToDoModel
+import SwiftSQL
 
 struct Items {
     
@@ -61,7 +62,7 @@ struct Items {
             var json: [String: Any] = [String: Any]()
             var itemList = [[String: Any]]()
             for item in items {
-                itemList.append(["item": "\(item.item)", "dueDate": item.dueDate == nil ? "NULL" : "\(item.dueDate!)", "id": item.id, "completed": item.isCompleted])
+                itemList.append(["item": "\(item.item)", "dueDate": item.dueDate == nil ? "NULL" : "\(getSQLDateTime(item.dueDate!))", "id": item.id, "completed": item.isCompleted])
             }
             json["todos"] = itemList
             response = try json.jsonEncodedString()

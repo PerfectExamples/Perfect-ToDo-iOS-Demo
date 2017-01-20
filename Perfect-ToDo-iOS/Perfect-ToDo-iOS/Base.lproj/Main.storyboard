@@ -173,14 +173,26 @@
                                             <segue destination="eXV-nB-6Xw" kind="show" id="EMu-Vv-Ne4"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cF5-ls-lgR">
+                                        <rect key="frame" x="8" y="44.5" width="45" height="29"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                        <state key="normal" title="Logout">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="logout:" destination="KHx-rJ-elC" eventType="touchUpInside" id="rMY-O4-Psv"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.1803921568627451" green="0.52941176470588236" blue="0.76470588235294112" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
+                                    <constraint firstItem="vpQ-rR-s3U" firstAttribute="centerY" secondItem="cF5-ls-lgR" secondAttribute="centerY" id="Juv-gd-D0l"/>
                                     <constraint firstAttribute="bottom" secondItem="vpQ-rR-s3U" secondAttribute="bottom" constant="8" id="OD0-LK-PLN"/>
                                     <constraint firstAttribute="height" constant="80" id="akh-BB-14W"/>
                                     <constraint firstItem="e4d-va-ch0" firstAttribute="top" secondItem="ENA-Tt-jWD" secondAttribute="top" constant="20" id="axF-0r-qMZ"/>
                                     <constraint firstItem="e4d-va-ch0" firstAttribute="centerX" secondItem="ENA-Tt-jWD" secondAttribute="centerX" id="b6S-EH-Hce"/>
                                     <constraint firstAttribute="trailing" secondItem="vpQ-rR-s3U" secondAttribute="trailing" constant="8" id="juO-D5-2Gd"/>
+                                    <constraint firstItem="cF5-ls-lgR" firstAttribute="leading" secondItem="ENA-Tt-jWD" secondAttribute="leading" constant="8" id="rYv-eX-8la"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kpn-ck-ZtF">

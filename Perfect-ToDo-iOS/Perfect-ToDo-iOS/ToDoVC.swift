@@ -34,6 +34,10 @@ class ToDoVC: UIViewController {
     @IBAction func add(_ sender: Any) {
         
     }
+    
+    @IBAction func logout(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 
 extension ToDoVC: UITableViewDelegate, UITableViewDataSource {

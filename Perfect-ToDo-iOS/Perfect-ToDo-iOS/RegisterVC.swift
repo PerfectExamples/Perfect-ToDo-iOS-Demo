@@ -27,6 +27,7 @@ class RegisterVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.setStateUsernameTaken), name: .usernameTaken, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.setRegistrationFailure), name: .userRegistrationFailed, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.registeredOkay), name: .userRegistered, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.updateAPIUnreachable), name: .apiServerUnreachable, object: nil)
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -70,6 +71,12 @@ class RegisterVC: UIViewController {
         DispatchQueue.main.async {
             self.dismiss(animated: true, completion: nil)
             NotificationCenter.default.post(Notification(name: .registrationSuccess))
+        }
+    }
+    
+    func updateAPIUnreachable() {
+        DispatchQueue.main.async {
+            self.setStateFailure(withWarning: "Service Unreachable")
         }
     }
 

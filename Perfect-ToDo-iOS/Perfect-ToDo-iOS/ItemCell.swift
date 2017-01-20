@@ -28,7 +28,8 @@ class ItemCell: UITableViewCell {
         self.itemName.text? = item.item
         
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd hh:mm"
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
         
         if let date = item.due {
             self.dueDate.text? = "Due: " + formatter.string(from: date)

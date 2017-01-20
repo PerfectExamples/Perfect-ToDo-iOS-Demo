@@ -50,7 +50,7 @@ struct Router {
                         if let json = try request.postBodyString?.jsonDecode() as? [String: String] {
                             let name = json["item"]
                             let dueDuate = json["dueDate"]
-                            let date = getDate(fromSQLDate: dueDuate ?? "")
+                            let date = getDate(fromSQLDateTime: dueDuate ?? "")
                             
                             if let hasName = name {
                                 responder = Items().create(name: hasName, dueDate: date, forToken: token)
@@ -84,7 +84,7 @@ struct Router {
                     if let id = Int(json["id"]!) {
                         
                         let complete = json["completed"] == "true" ? true : false
-                        let due = getDate(fromSQLDate: json["dueDate"] ?? "")
+                        let due = getDate(fromSQLDateTime: json["dueDate"] ?? "")
                         
                         var newItemName: String? = nil
                         
