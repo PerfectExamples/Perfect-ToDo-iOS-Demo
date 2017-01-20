@@ -17,9 +17,13 @@ class LoginVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        DataService.instance.load()
+
+        emailField.autocorrectionType = .no
+        emailField.autocapitalizationType = .none
+        emailField.spellCheckingType = .no
         activityIndicator.isHidden = true
+        NotificationCenter.default.addObserver(self, selector: #selector(self.loadToDos), name: .downloadComplete, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.updateInvalidLogin), name: .invalidLogin, object: nil)
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -45,6 +49,13 @@ class LoginVC: UIViewController {
         self.warningLabel.isHidden = false
     }
     
+    func updateInvalidLogin() {
+        DispatchQueue.main.async {
+            // Do UI stuff here
+            self.updateStateError(witMessage: "Invalid Login")
+        }
+    }
+    
     @IBAction func login(_ sender: Any) {
         
         updateStateRunning()
@@ -52,7 +63,18 @@ class LoginVC: UIViewController {
         if emailField.text == nil || emailField.text == "" || passwordField.text == nil || passwordField.text == "" {
             updateStateError(witMessage: "All Fields are Required")
         } else {
-            //try login
+            if let email = emailField.text, let pass = passwordField.text {
+                DataService.instance.load(forUsername: email, withPassword: pass)
+            }
+        }
+    }
+    
+    @objc func loadToDos() {
+        DispatchQueue.main.async {
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            
+            let toDoVC = storyBoard.instantiateViewController(withIdentifier: "ToDoVC") as! ToDoVC
+            self.present(toDoVC, animated:true, completion:nil)
         }
     }
 }

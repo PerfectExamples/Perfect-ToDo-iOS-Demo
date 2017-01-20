@@ -14,8 +14,15 @@ class ToDoVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        tableView.reloadData()
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -27,4 +34,33 @@ class ToDoVC: UIViewController {
     @IBAction func add(_ sender: Any) {
         
     }
+}
+
+extension ToDoVC: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return DataService.instance.loadedItems.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let item = DataService.instance.loadedItems[indexPath.row]
+        
+        dump(item)
+
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell") as? ItemCell {
+            cell.configureCell(item)
+            return cell
+        } else {
+            let cell = ItemCell()
+            cell.configureCell(item)
+            return cell
+        }
+    }
+
+    
 }
