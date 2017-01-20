@@ -58,13 +58,15 @@ struct Items {
         
         do {
             let items = try ToDoManager().get(forToken: token)
-            var json: [[String: Any]] = [[String: Any]]()
+            var json: [String: Any] = [String: Any]()
+            var itemList = [[String: Any]]()
             for item in items {
-                json.append(["item": "\(item.item)", "dueDate": item.dueDate == nil ? "NULL" : "\(item.dueDate!)", "id": item.id, "completed": item.isCompleted])
+                itemList.append(["item": "\(item.item)", "dueDate": item.dueDate == nil ? "NULL" : "\(item.dueDate!)", "id": item.id, "completed": item.isCompleted])
             }
+            json["todos"] = itemList
             response = try json.jsonEncodedString()
         } catch {
-            response = "{\"Error\": \"Failed to Update\"}"
+            response = "{\"Error\": \"Failed to get\"}"
         }
         
         return response

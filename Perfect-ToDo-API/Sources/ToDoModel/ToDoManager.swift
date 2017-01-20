@@ -20,7 +20,8 @@ public struct ToDoManager {
         let getObj = ToDoItem()
         
         do {
-            try getObj.select(whereclause: "associatedUser = ?", params: [token], orderby: ["id"])
+            let user = try getUser(forToken: token)
+            try getObj.select(whereclause: "associatedUser = ?", params: [user], orderby: ["id"])
             
             for row in getObj.rows() {
                 items.append(row)
