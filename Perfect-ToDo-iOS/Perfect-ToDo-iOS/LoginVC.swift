@@ -14,6 +14,7 @@ class LoginVC: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var warningLabel: UILabel!
+    @IBOutlet weak var loginButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,8 @@ class LoginVC: UIViewController {
         activityIndicator.isHidden = true
         NotificationCenter.default.addObserver(self, selector: #selector(self.loadToDos), name: .downloadComplete, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateInvalidLogin), name: .invalidLogin, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.updateAPIUnreachable), name: .apiServerUnreachable, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.updateRegistrationSuccess), name: .registrationSuccess, object: nil)
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -33,26 +36,40 @@ class LoginVC: UIViewController {
     }
     
     func updateStateRunning() {
-        self.warningLabel.isHidden = true
-        self.activityIndicator.isHidden = false
-        self.activityIndicator.startAnimating()
+        loginButton.isHidden = true
+        warningLabel.isHidden = true
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
     }
     
     func updateStateStopped() {
-        self.activityIndicator.isHidden = true
-        self.activityIndicator.stopAnimating()
+        loginButton.isHidden = false
+        activityIndicator.isHidden = true
+        activityIndicator.stopAnimating()
     }
     
     func updateStateError(witMessage message: String) {
         updateStateStopped()
-        self.warningLabel.text = message
-        self.warningLabel.isHidden = false
+        warningLabel.text = message
+        warningLabel.isHidden = false
     }
     
     func updateInvalidLogin() {
         DispatchQueue.main.async {
             // Do UI stuff here
             self.updateStateError(witMessage: "Invalid Login")
+        }
+    }
+    
+    func updateAPIUnreachable() {
+        DispatchQueue.main.async {
+            self.updateStateError(witMessage: "Service Unreachable")
+        }
+    }
+    
+    func updateRegistrationSuccess() {
+        DispatchQueue.main.async {
+            self.updateStateError(witMessage: "Registration Successful")
         }
     }
     

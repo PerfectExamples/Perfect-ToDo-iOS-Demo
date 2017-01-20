@@ -41,9 +41,15 @@ class RemoteUser {
             return
         }
         var request = URLRequest(url: endpoint)
+        request.timeoutInterval = 3
         request.httpMethod = "POST"
 
         URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            if error != nil {
+                NotificationCenter.default.post(Notification(name: .apiServerUnreachable))
+            }
+            
             do {
                 guard let data = data else {
                     return
@@ -60,7 +66,53 @@ class RemoteUser {
                     }
                 }
             } catch {
-                print("Failed")
+                print("Failed to parse JSON Response from Login")
+                NotificationCenter.default.post(Notification(name: .invalidLogin))
+            }
+            }.resume()
+    }
+    
+    func register() {
+            
+        print("Registering user: \(_username) with password: \(_password)")
+        
+        let urlPath = "http://0.0.0.0:8181/api/v1/register/?username=\(_username)&password=\(_password)"
+        guard let endpoint = URL(string: urlPath) else {
+            print("Error creating endpoint")
+            return
+        }
+        var request = URLRequest(url: endpoint)
+        request.timeoutInterval = 3
+        request.httpMethod = "POST"
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            if error != nil {
+                NotificationCenter.default.post(Notification(name: .apiServerUnreachable))
+            }
+            
+            do {
+                guard let data = data else {
+                    return
+                }
+                guard let json = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary else {
+                    return
+                }
+                
+                if let registration = json["login"] as? String {
+                    if registration == "ok" {
+                        NotificationCenter.default.post(Notification(name: .userRegistered))
+                    }
+                } else if let err = json["error"] as? String {
+                    if err != "none" {
+                        NotificationCenter.default.post(Notification(name: .usernameTaken))
+                    }
+                } else {
+                    NotificationCenter.default.post(Notification(name: .userRegistrationFailed))
+                }
+            } catch {
+                print("Failed to parse JSON Reponse from Registration")
+                NotificationCenter.default.post(Notification(name: .userRegistrationFailed))
             }
             }.resume()
     }

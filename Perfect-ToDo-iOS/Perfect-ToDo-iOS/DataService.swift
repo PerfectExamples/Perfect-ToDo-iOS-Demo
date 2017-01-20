@@ -61,6 +61,10 @@ class DataService {
             
             var items = [ToDoItem]()
             
+            if error != nil {
+                NotificationCenter.default.post(Notification(name: .apiServerUnreachable))
+            }
+            
             do {
                 guard let data = data else {
                     return
@@ -93,7 +97,7 @@ class DataService {
             }.resume()
     }
     
-    public func getDate(fromSQLDateTime str: String) -> Date? {
+    func getDate(fromSQLDateTime str: String) -> Date? {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
         
