@@ -41,7 +41,7 @@ struct Router {
         routes.add(method: .post, uri: "/api/v1/create", handler: {
             request, response in
             
-            var responder = "{\"Error\"}"
+            var responder = "{\"error\": \"failed to create\"}"
             
             if let authHeader = request.header(.authorization) {
                 if let token = self.parseToken(fromHeader: authHeader) {

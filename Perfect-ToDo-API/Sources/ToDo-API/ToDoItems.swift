@@ -13,21 +13,21 @@ import SwiftSQL
 struct Items {
     
     func count(forToken token: String) -> String {
-        var response = "{\"Error\": \"An Unknown Error Occured\"}"
+        var response = "{\"error\": \"An Unknown Error Occured\"}"
         
         do {
             let count = try ToDoManager().count(forToken: token)
             let data: [String: Any] = ["count": count]
             response = try data.jsonEncodedString()
         } catch {
-            response = "{\"Error\": \"Failed to Count Items\"}"
+            response = "{\"error\": \"Failed to Count Items\"}"
         }
         
         return response
     }
     
     func create(name: String, dueDate: Date?, forToken token: String) -> String {
-        var response = "{\"Error\": \"An Unknown Error Occured\"}"
+        var response = "{\"error\": \"An Unknown Error Occured\"}"
         
         do  {
             let newItem = try ToDoManager().create(item: name, dueDate: dueDate, forToken: token)
@@ -41,21 +41,21 @@ struct Items {
     }
     
     func update(item obj: ToDoItem, completed: Bool?, dueDate: Date?, newName name: String?) -> String {
-        var response = "{\"Error\": \"An Unknown Error Occured\"}"
+        var response = "{\"error\": \"An Unknown Error Occured\"}"
         
         do {
             let updatedItem = try ToDoManager().update(item: obj, completed: completed, dueDate: dueDate, newName: name)
             let json: [String: Any] = ["item": "\(updatedItem.item)", "dueDate": "\(updatedItem.dueDate)", "id": updatedItem.id, "completed": updatedItem.isCompleted]
             response = try json.jsonEncodedString()
         } catch {
-            response = "{\"Error\": \"Failed to Update\"}"
+            response = "{\"error\": \"Failed to Update\"}"
         }
         
         return response
     }
     
     func getAll(forToken token: String) -> String {
-        var response = "{\"Error\": \"An Unknown Error Occured\"}"
+        var response = "{\"error\": \"An Unknown Error Occured\"}"
         
         do {
             let items = try ToDoManager().get(forToken: token)
@@ -67,21 +67,21 @@ struct Items {
             json["todos"] = itemList
             response = try json.jsonEncodedString()
         } catch {
-            response = "{\"Error\": \"Failed to get\"}"
+            response = "{\"error\": \"Failed to get\"}"
         }
         
         return response
     }
     
     func delete(_ obj: ToDoItem) -> String {
-       var response = "{\"Error\": \"An Unknown Error Occured\"}"
+       var response = "{\"error\": \"An Unknown Error Occured\"}"
         
         do {
             let deleted = try ToDoManager().delete(obj)
             let json: [String: Any] = ["id": obj.id, "deleted": deleted]
             response = try json.jsonEncodedString()
         } catch {
-            response = "{\"Error\": \"Failed to Update\"}"
+            response = "{\"error\": \"Failed to Update\"}"
         }
         
         return response

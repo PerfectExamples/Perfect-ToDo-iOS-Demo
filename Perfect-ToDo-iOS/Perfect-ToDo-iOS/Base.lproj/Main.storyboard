@@ -325,20 +325,38 @@
                                     <action selector="add:" destination="eXV-nB-6Xw" eventType="touchUpInside" id="W11-y8-RWp"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="38Q-pJ-QHf">
+                                <rect key="frame" x="150" y="140" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Incorrect Login - Try Again" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XoP-ik-FOM">
+                                <rect key="frame" x="16" y="431" width="288" height="24"/>
+                                <color key="backgroundColor" red="1" green="0.0099468241870000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="sF5-hz-pi8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.1803921568627451" green="0.52941176470588236" blue="0.76470588235294112" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="GIH-71-ETF" firstAttribute="leading" secondItem="pUG-Cd-fCA" secondAttribute="leadingMargin" id="3V1-AG-lDP"/>
+                            <constraint firstItem="XoP-ik-FOM" firstAttribute="leading" secondItem="pUG-Cd-fCA" secondAttribute="leadingMargin" id="7YL-RU-rFM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="xhy-Uo-FJ3" secondAttribute="trailing" id="96C-5Z-mBG"/>
                             <constraint firstItem="xhy-Uo-FJ3" firstAttribute="top" secondItem="TEs-nb-Z1T" secondAttribute="bottom" constant="70" id="DaM-my-a5f"/>
                             <constraint firstItem="GIH-71-ETF" firstAttribute="centerY" secondItem="8bP-3e-HCM" secondAttribute="centerY" id="Hab-10-LNB"/>
+                            <constraint firstItem="SPw-hZ-Ouf" firstAttribute="top" secondItem="XoP-ik-FOM" secondAttribute="bottom" constant="25" id="HfK-7C-yrP"/>
                             <constraint firstItem="lkp-FS-pvS" firstAttribute="top" secondItem="uYV-lj-PnH" secondAttribute="bottom" constant="18" id="Jbe-2g-tVl"/>
                             <constraint firstAttribute="trailing" secondItem="lkp-FS-pvS" secondAttribute="trailing" id="L5J-a8-7Ce"/>
                             <constraint firstItem="uYV-lj-PnH" firstAttribute="centerY" secondItem="h4o-Sr-yUA" secondAttribute="centerY" id="MAg-xK-lZM"/>
+                            <constraint firstItem="38Q-pJ-QHf" firstAttribute="centerX" secondItem="pUG-Cd-fCA" secondAttribute="centerX" id="Na6-gW-yl1"/>
                             <constraint firstItem="dUU-ST-mrQ" firstAttribute="trailing" secondItem="pUG-Cd-fCA" secondAttribute="trailingMargin" id="UQT-r0-VNr"/>
                             <constraint firstItem="dUU-ST-mrQ" firstAttribute="centerY" secondItem="8bP-3e-HCM" secondAttribute="centerY" id="Wk3-9R-nbg"/>
                             <constraint firstItem="xhy-Uo-FJ3" firstAttribute="leading" secondItem="pUG-Cd-fCA" secondAttribute="leadingMargin" id="aCR-mg-Evj"/>
                             <constraint firstItem="h4o-Sr-yUA" firstAttribute="top" secondItem="xhy-Uo-FJ3" secondAttribute="bottom" constant="20" id="ddK-kt-lG1"/>
+                            <constraint firstItem="38Q-pJ-QHf" firstAttribute="top" secondItem="xhy-Uo-FJ3" secondAttribute="bottom" constant="20" id="eTH-Cg-pwd"/>
+                            <constraint firstItem="XoP-ik-FOM" firstAttribute="trailing" secondItem="pUG-Cd-fCA" secondAttribute="trailingMargin" id="gYI-uR-ruo"/>
                             <constraint firstItem="8bP-3e-HCM" firstAttribute="top" secondItem="TEs-nb-Z1T" secondAttribute="bottom" constant="8" id="lNZ-iX-Xil"/>
                             <constraint firstItem="h4o-Sr-yUA" firstAttribute="leading" secondItem="pUG-Cd-fCA" secondAttribute="leadingMargin" id="tKe-1o-DhK"/>
                             <constraint firstItem="lkp-FS-pvS" firstAttribute="leading" secondItem="pUG-Cd-fCA" secondAttribute="leading" id="vNg-HN-Dg6"/>
@@ -347,9 +365,12 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="38Q-pJ-QHf" id="IFe-jj-aex"/>
                         <outlet property="datePicker" destination="lkp-FS-pvS" id="I8o-kt-dfX"/>
                         <outlet property="dueDateSwitch" destination="uYV-lj-PnH" id="JvC-rK-jdU"/>
+                        <outlet property="dueDateSwitchLabel" destination="h4o-Sr-yUA" id="D0I-59-hs5"/>
                         <outlet property="itemField" destination="xhy-Uo-FJ3" id="ule-Y8-v3n"/>
+                        <outlet property="warningLabel" destination="XoP-ik-FOM" id="z7l-Do-2s5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3WQ-AH-ZHv" userLabel="First Responder" sceneMemberID="firstResponder"/>

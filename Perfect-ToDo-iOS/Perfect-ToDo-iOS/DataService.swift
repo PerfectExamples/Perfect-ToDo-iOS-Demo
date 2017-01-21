@@ -12,11 +12,7 @@ class DataService {
     
     static let instance = DataService()
 
-    fileprivate var _loadedItems = [ToDoItem]() {
-        didSet {
-            NotificationCenter.default.post(Notification(name: .toDoItemsLoaded))
-        }
-    }
+    fileprivate var _loadedItems = [ToDoItem]()
     fileprivate var _currentUser: RemoteUser?
     
     var loadedItems: [ToDoItem] {
@@ -25,56 +21,59 @@ class DataService {
         }
     }
     
-    func add(_ item: ToDoItem) {
-//        let urlPath = "http://0.0.0.0:8181/api/v1/get/all"
-//        guard let endpoint = URL(string: urlPath) else {
-//            print("Error creating endpoint")
-//            return
-//        }
-//        var request = URLRequest(url: endpoint)
-//        request.httpMethod = "GET"
-//        if let token = _currentUser?.currentToken {
-//            request.setValue("Bearer \(token)", forHTTPHeaderField: "authorization")
-//        }
-//        
-//        URLSession.shared.dataTask(with: request) { (data, response, error) in
-//            
-//            if error != nil {
-//                NotificationCenter.default.post(Notification(name: .apiServerUnreachable))
-//            }
-//            
-//            do {
-//                guard let data = data else {
-//                    return
-//                }
-//                guard let jsonArr = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
-//                    return
-//                }
-//                
-//                if let array = jsonArr["todos"] as? [[String: Any]] {
-//                    for json in array {
-//                        if let id = json["id"] as? Int, let item = json["item"] as? String {
-//                            
-//                            var due: Date? = nil
-//                            
-//                            if let dueDate = json["dueDate"] as? String {
-//                                due = self.getDate(fromSQLDateTime: dueDate)
-//                            }
-//                            
-//                            let item = ToDoItem(withID: id, itemName: item, dueOn: due)
-//                            items.append(item)
-//                        }
-//                    }
-//                    
-//                    self._loadedItems = items
-//                    NotificationCenter.default.post(Notification(name: .downloadComplete))
-//                }
-//            } catch let err as NSError {
-//                print(err.debugDescription)
-//            }
-//            }.resume()
+    func add(withItemName item: String, withDueDate due: Date?) {
+        let urlPath = "http://0.0.0.0:8181/api/v1/create"
+        guard let endpoint = URL(string: urlPath) else {
+            print("Error creating endpoint")
+            return
+        }
+        var request = URLRequest(url: endpoint)
+        request.httpMethod = "POST"
+        if let token = _currentUser?.currentToken {
+            request.setValue("Bearer \(token)", forHTTPHeaderField: "authorization")
+        }
         
-        _loadedItems.append(item)
+        var json = ["item": "\(item)"]
+        if let dueDate = due {
+            json["dueDate"] = "\(getSQLDateTime(dueDate))"
+        }
+        
+        do {
+            let data = try JSONSerialization.data(withJSONObject: json, options: [])
+            request.httpBody = data
+        } catch {
+            
+        }
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            if error != nil {
+                NotificationCenter.default.post(Notification(name: .apiServerUnreachable))
+            }
+            
+            do {
+                guard let data = data else {
+                    return
+                }
+                guard let jsonArr = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
+                    return
+                }
+                
+                
+                if let error = jsonArr["error"] {
+                    print("An error occurred: \(error)")
+                    NotificationCenter.default.post(Notification(name: .addFailure))
+                } else if let id = jsonArr["id"] as? Int, let name = jsonArr["item"] as? String, let dueDate = jsonArr["dueDate"] as? String {
+                    let due = self.getDate(fromSQLDateTime: dueDate)
+                    let todo = ToDoItem(withID: id, itemName: name, dueOn: due)
+                    self._loadedItems.append(todo)
+                    NotificationCenter.default.post(Notification(name: .addSuccessful))
+                }
+            } catch let err as NSError {
+                print(err.debugDescription)
+                NotificationCenter.default.post(Notification(name: .addFailure))
+            }
+            }.resume()
     }
     
     func remove(at index: Int) {
@@ -94,6 +93,52 @@ class DataService {
     
     func deletefromServer(_ id: Int) {
         //Delete From Server
+        let urlPath = "http://0.0.0.0:8181/api/v1/delete"
+        guard let endpoint = URL(string: urlPath) else {
+            print("Error creating endpoint")
+            return
+        }
+        var request = URLRequest(url: endpoint)
+        request.httpMethod = "POST"
+        if let token = _currentUser?.currentToken {
+            request.setValue("Bearer \(token)", forHTTPHeaderField: "authorization")
+        }
+        
+        let json = ["id": "\(id)"]
+        
+        do {
+            let data = try JSONSerialization.data(withJSONObject: json, options: [])
+            request.httpBody = data
+        } catch {
+            
+        }
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            if error != nil {
+                NotificationCenter.default.post(Notification(name: .apiServerUnreachable))
+            }
+            
+            do {
+                guard let data = data else {
+                    return
+                }
+                guard let jsonArr = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
+                    return
+                }
+                
+                
+                if let error = jsonArr["error"] {
+                    print("An error occurred: \(error)")
+                } else if let id = jsonArr["id"] as? Int, let delete = jsonArr["deleted"] as? Bool {
+                    if delete == true {
+                        print("Deleted Item: \(id): \(delete)")
+                    }
+                }
+            } catch let err as NSError {
+                print(err.debugDescription)
+            }
+            }.resume()
     }
     
     func updateRemoteServer() -> Bool {
@@ -161,5 +206,12 @@ class DataService {
         formatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
         
         return formatter.date(from: str)
+    }
+    
+    func getSQLDateTime(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        
+        return formatter.string(from: date)
     }
 }
