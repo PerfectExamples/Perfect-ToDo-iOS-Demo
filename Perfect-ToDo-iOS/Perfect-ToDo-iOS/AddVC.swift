@@ -22,6 +22,8 @@ class AddVC: UIViewController {
 
         activityIndicator.isHidden = true
         NotificationCenter.default.addObserver(self, selector: #selector(self.cancel(_:)), name: .addSuccessful, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.setStateAPIUnavailable), name: .apiServerUnreachable, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.setAddFailure), name: .addFailure, object: nil)
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -55,6 +57,18 @@ class AddVC: UIViewController {
         setStateStopped()
         warningLabel.isHidden = false
         warningLabel.text? = message
+    }
+    
+    func setStateAPIUnavailable() {
+        DispatchQueue.main.async {
+            self.setStateWarning(withMessage: "Service Unavailable")
+        }
+    }
+    
+    func setAddFailure() {
+        DispatchQueue.main.async {
+            self.setStateWarning(withMessage: "Failed to Add")
+        }
     }
 
     @IBAction func dueDateSwitchPressed(_ sender: UISwitch) {

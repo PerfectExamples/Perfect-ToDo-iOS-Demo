@@ -37,6 +37,7 @@ class LoginVC: UIViewController {
     
     func updateStateRunning() {
         loginButton.isHidden = true
+        loginButton.isEnabled = false
         warningLabel.isHidden = true
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
@@ -44,6 +45,7 @@ class LoginVC: UIViewController {
     
     func updateStateStopped() {
         loginButton.isHidden = false
+        loginButton.isEnabled = true
         activityIndicator.isHidden = true
         activityIndicator.stopAnimating()
     }
