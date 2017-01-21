@@ -77,12 +77,23 @@ class DataService {
         _loadedItems.append(item)
     }
     
+    func remove(at index: Int) {
+        //Trigger API removal
+        let id = _loadedItems[index].id
+        self.deletefromServer(id)
+        self._loadedItems.remove(at: index)
+    }
+    
     func load(forUsername user: String, withPassword password: String) {
         NotificationCenter.default.addObserver(self, selector: #selector(DataService.instance.downloadRemoteServer), name: .tokenSet, object: nil)
         _currentUser = RemoteUser(user: user, pass: password)
         if _currentUser?.currentToken == nil || _currentUser?.currentToken == "" {
             _currentUser?.login()
         }
+    }
+    
+    func deletefromServer(_ id: Int) {
+        //Delete From Server
     }
     
     func updateRemoteServer() -> Bool {

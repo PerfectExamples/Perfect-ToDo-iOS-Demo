@@ -87,8 +87,13 @@ class RegisterVC: UIViewController {
     @IBAction func register(_ sender: Any) {
         setStateRegistering()
         if let password = passwordField.text, let verification = passwordVerificationField.text, let username = emailField.text {
-            guard password == verification else {
+            guard password == verification, password != "" else {
                 self.setStateFailure(withWarning: "Passwords Don't Match")
+                return
+            }
+            
+            guard username != "" else {
+                self.setStateFailure(withWarning: "Username is required")
                 return
             }
             

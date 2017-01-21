@@ -17,6 +17,8 @@ class ToDoVC: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.allowsMultipleSelectionDuringEditing = false
+        NotificationCenter.default.addObserver(self, selector: #selector(self.onItemsLoaded(_:)), name: .toDoItemsLoaded, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -29,6 +31,10 @@ class ToDoVC: UIViewController {
         get {
             return .lightContent
         }
+    }
+    
+    func onItemsLoaded(_ notif: AnyObject) {
+        tableView.reloadData()
     }
     
     @IBAction func add(_ sender: Any) {
@@ -66,5 +72,16 @@ extension ToDoVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
 
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            DataService.instance.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+        }
+    }
 }
