@@ -59,8 +59,6 @@ extension ToDoVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let item = DataService.instance.loadedItems[indexPath.row]
-        
-        dump(item)
 
         if let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell") as? ItemCell {
             cell.configureCell(item)

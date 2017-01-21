@@ -31,7 +31,7 @@ struct Items {
         
         do  {
             let newItem = try ToDoManager().create(item: name, dueDate: dueDate, forToken: token)
-            let json: [String: Any] = ["item": "\(newItem.item)", "dueDate": "\(newItem.dueDate)", "id": newItem.id]
+            let json: [String: Any] = ["item": "\(newItem.item)", "dueDate": newItem.dueDate == nil ? "NULL" : "\(getSQLDateTime(newItem.dueDate!))", "id": newItem.id]
             response = try json.jsonEncodedString()
         } catch {
             
