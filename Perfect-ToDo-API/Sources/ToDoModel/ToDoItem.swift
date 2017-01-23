@@ -17,7 +17,7 @@ public class ToDoItem: MySQLStORM {
     public var id: Int = 0
     public var item: String = "Default"
     private var due: String = "NULL"
-    private var completed: Int = 0
+    private var completed: Int32 = 0
     public var associatedUser: String = ""
     
     public var dueDate: Date? {
@@ -53,7 +53,7 @@ public class ToDoItem: MySQLStORM {
     override public func to(_ this: StORMRow) {
         id = Int(this.data["id"] as? Int32 ?? 0)
         item = this.data["item"] as? String ?? "Default"
-        completed = this.data["completed"] as? Int ?? 0
+        completed = this.data["completed"] as? Int32 ?? 0
         due = this.data["due"] as? String ?? "NULL"
         associatedUser = this.data["associatedUser"] as? String ?? ""
     }
