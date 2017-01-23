@@ -22,7 +22,7 @@ class DataService {
     }
     
     func add(withItemName item: String, withDueDate due: Date?) {
-        let urlPath = "http://0.0.0.0:8181/api/v1/create"
+        let urlPath = "\(apiEndpoint)/v1/create"
         guard let endpoint = URL(string: urlPath) else {
             print("Error creating endpoint")
             return
@@ -93,7 +93,7 @@ class DataService {
     
     func deletefromServer(_ id: Int) {
         //Delete From Server
-        let urlPath = "http://0.0.0.0:8181/api/v1/delete"
+        let urlPath = "\(apiEndpoint)/v1/delete"
         guard let endpoint = URL(string: urlPath) else {
             print("Error creating endpoint")
             return
@@ -150,7 +150,7 @@ class DataService {
     }
     
     @objc func downloadRemoteServer() {
-        let urlPath = "http://0.0.0.0:8181/api/v1/get/all"
+        let urlPath = "\(apiEndpoint)/v1/get/all"
         guard let endpoint = URL(string: urlPath) else {
             print("Error creating endpoint")
             return

@@ -35,7 +35,7 @@ class RemoteUser {
         
         print("Logging in user: \(_username) with password: \(_password)")
         
-        let urlPath = "http://0.0.0.0:8181/api/v1/login/?username=\(_username)&password=\(_password)"
+        let urlPath = "\(apiEndpoint)/v1/login/?username=\(_username)&password=\(_password)"
         guard let endpoint = URL(string: urlPath) else {
             print("Error creating endpoint")
             return
@@ -76,7 +76,7 @@ class RemoteUser {
             
         print("Registering user: \(_username) with password: \(_password)")
         
-        let urlPath = "http://0.0.0.0:8181/api/v1/register/?username=\(_username)&password=\(_password)"
+        let urlPath = "\(apiEndpoint)/v1/register/?username=\(_username)&password=\(_password)"
         guard let endpoint = URL(string: urlPath) else {
             print("Error creating endpoint")
             return
