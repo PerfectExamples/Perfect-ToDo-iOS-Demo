@@ -1,5 +1,4 @@
 # ToDo API & iOS App Integration Demo
-# STILL NEEDS README ADAPTATION
 
 <p align="center">
 <a href="http://perfect.org/get-involved.html" target="_blank">
