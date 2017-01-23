@@ -19,6 +19,7 @@ class ToDoVC: UIViewController {
         tableView.dataSource = self
         tableView.allowsMultipleSelectionDuringEditing = false
         NotificationCenter.default.addObserver(self, selector: #selector(self.onItemsLoaded(_:)), name: .toDoItemsLoaded, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.onItemsLoaded(_:)), name: .itemUpdated, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -35,10 +36,6 @@ class ToDoVC: UIViewController {
     
     func onItemsLoaded(_ notif: AnyObject) {
         tableView.reloadData()
-    }
-    
-    @IBAction func add(_ sender: Any) {
-        
     }
     
     @IBAction func logout(_ sender: Any) {
@@ -74,12 +71,23 @@ extension ToDoVC: UITableViewDelegate, UITableViewDataSource {
         return true
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let markComplete = UITableViewRowAction(style: .normal, title: "Complete") { action, index in
+            DataService.instance.update(itemAtIndex: indexPath.row, completed: true, dueDate: nil, newTitle: nil)
+        }
+        markComplete.backgroundColor = .green
+        
+        let markIncomplete = UITableViewRowAction(style: .normal, title: "Incomplete") { action, index in
+            DataService.instance.update(itemAtIndex: indexPath.row, completed: false, dueDate: nil, newTitle: nil)
+        }
+        markIncomplete.backgroundColor = .lightGray
+        
+        let delete = UITableViewRowAction(style: .normal, title: "Delete") { action, index in
             DataService.instance.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
+        delete.backgroundColor = .red
+        
+        return [markComplete, markIncomplete, delete]
     }
 }

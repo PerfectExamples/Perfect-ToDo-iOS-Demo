@@ -26,4 +26,7 @@ extension Notification.Name {
     //Adding
     static let addSuccessful = Notification.Name("addSuccessful")
     static let addFailure = Notification.Name("addFailure")
+    //Updates
+    static let itemUpdated = Notification.Name("itemUpdated")
+    static let updateFailure = Notification.Name("updateFailure")
 }

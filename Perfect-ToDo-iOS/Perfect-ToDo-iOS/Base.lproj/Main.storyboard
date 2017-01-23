@@ -169,7 +169,6 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="add:" destination="KHx-rJ-elC" eventType="touchUpInside" id="vVB-CQ-PfZ"/>
                                             <segue destination="eXV-nB-6Xw" kind="show" id="EMu-Vv-Ne4"/>
                                         </connections>
                                     </button>
@@ -195,42 +194,49 @@
                                     <constraint firstItem="cF5-ls-lgR" firstAttribute="leading" secondItem="ENA-Tt-jWD" secondAttribute="leading" constant="8" id="rYv-eX-8la"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kpn-ck-ZtF">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="74" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kpn-ck-ZtF">
                                 <rect key="frame" x="0.0" y="80" width="320" height="400"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemCell" id="anH-wE-zod" customClass="ItemCell" customModule="Perfect_ToDo_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemCell" rowHeight="74" id="anH-wE-zod" customClass="ItemCell" customModule="Perfect_ToDo_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="anH-wE-zod" id="1Ii-eB-5de">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="73"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due: 12-09-2017" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1aV-Ry-phu">
-                                                    <rect key="frame" x="189" y="13" width="107" height="17"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ToDo Item Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnA-L5-GWe">
-                                                    <rect key="frame" x="24" y="14" width="105" height="17"/>
+                                                    <rect key="frame" x="24" y="16" width="105" height="17"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Incomplete" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AMQ-aA-2FT">
+                                                    <rect key="frame" x="231.5" y="29.5" width="64.5" height="14.5"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
+                                                    <color key="textColor" red="1" green="0.0099468241870000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due: 12-09-2017" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1aV-Ry-phu">
+                                                    <rect key="frame" x="24" y="41" width="107" height="17"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="AMQ-aA-2FT" firstAttribute="trailing" secondItem="1Ii-eB-5de" secondAttribute="trailingMargin" constant="-16" id="HfO-ns-uFp"/>
                                                 <constraint firstItem="pnA-L5-GWe" firstAttribute="leading" secondItem="1Ii-eB-5de" secondAttribute="leadingMargin" constant="16" id="Tj0-1Q-5Jy"/>
-                                                <constraint firstItem="1aV-Ry-phu" firstAttribute="trailing" secondItem="1Ii-eB-5de" secondAttribute="trailingMargin" constant="-16" id="cMN-Wk-4MO"/>
+                                                <constraint firstItem="pnA-L5-GWe" firstAttribute="top" secondItem="1Ii-eB-5de" secondAttribute="topMargin" constant="8" id="iGw-xg-rLQ"/>
+                                                <constraint firstItem="AMQ-aA-2FT" firstAttribute="centerY" secondItem="1Ii-eB-5de" secondAttribute="centerY" id="ku0-id-JKb"/>
+                                                <constraint firstItem="1aV-Ry-phu" firstAttribute="leading" secondItem="pnA-L5-GWe" secondAttribute="leading" id="pMS-su-wSk"/>
+                                                <constraint firstItem="1aV-Ry-phu" firstAttribute="top" secondItem="pnA-L5-GWe" secondAttribute="bottom" constant="8" id="sX9-wU-a2K"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <constraints>
-                                            <constraint firstItem="1aV-Ry-phu" firstAttribute="centerY" secondItem="anH-wE-zod" secondAttribute="centerY" id="nsh-QC-PVp"/>
-                                            <constraint firstItem="pnA-L5-GWe" firstAttribute="centerY" secondItem="anH-wE-zod" secondAttribute="centerY" id="t5Z-2n-jgi"/>
-                                        </constraints>
                                         <connections>
                                             <outlet property="dueDate" destination="1aV-Ry-phu" id="jjM-Vr-XeN"/>
                                             <outlet property="itemName" destination="pnA-L5-GWe" id="Mi1-Rw-NPj"/>
+                                            <outlet property="statusLabel" destination="AMQ-aA-2FT" id="l5C-5M-GOY"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -253,7 +259,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pDT-J2-She" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="890" y="139"/>
+            <point key="canvasLocation" x="888.75" y="138.75"/>
         </scene>
         <!--AddVC-->
         <scene sceneID="5hf-gT-zCI">

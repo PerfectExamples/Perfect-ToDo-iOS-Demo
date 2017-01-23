@@ -76,6 +76,77 @@ class DataService {
             }.resume()
     }
     
+    func update(itemAtIndex index: Int, completed: Bool?, dueDate: Date?, newTitle name: String?) {
+        //Trigger API Update
+        let id = _loadedItems[index].id
+        
+        if completed == true {
+            self._loadedItems[index].setComplete()
+        } else if completed == false {
+            self._loadedItems[index].setIncomplete()
+        }
+        
+        self.updateServer(itemWithID: id, completed: completed, dueDate: dueDate, newTitle: name)
+        
+        NotificationCenter.default.post(Notification(name: .itemUpdated))
+    }
+    
+    func updateServer(itemWithID id: Int, completed: Bool?, dueDate: Date?, newTitle name: String?) {
+        let urlPath = "\(apiEndpoint)/v1/update"
+        guard let endpoint = URL(string: urlPath) else {
+            print("Error creating endpoint")
+            return
+        }
+        var request = URLRequest(url: endpoint)
+        request.httpMethod = "POST"
+        if let token = _currentUser?.currentToken {
+            request.setValue("Bearer \(token)", forHTTPHeaderField: "authorization")
+        }
+        
+        var json = ["id": "\(id)"]
+        if let dueDate = dueDate {
+            json["dueDate"] = "\(getSQLDateTime(dueDate))"
+        }
+        if let newName = name {
+            json["title"] = newName
+        }
+        if let isComplete = completed {
+            json["completed"] = "\(isComplete)"
+        }
+        
+        do {
+            let data = try JSONSerialization.data(withJSONObject: json, options: [])
+            request.httpBody = data
+        } catch {
+            
+        }
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            if error != nil {
+                NotificationCenter.default.post(Notification(name: .apiServerUnreachable))
+            }
+            
+            do {
+                guard let data = data else {
+                    return
+                }
+                guard let jsonArr = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
+                    return
+                }
+                
+                
+                if let error = jsonArr["error"] {
+                    print("An error occurred: \(error)")
+                    NotificationCenter.default.post(Notification(name: .updateFailure))
+                }
+            } catch let err as NSError {
+                print(err.debugDescription)
+                NotificationCenter.default.post(Notification(name: .updateFailure))
+            }
+            }.resume()
+    }
+    
     func remove(at index: Int) {
         //Trigger API removal
         let id = _loadedItems[index].id
@@ -188,6 +259,12 @@ class DataService {
                             }
                             
                             let item = ToDoItem(withID: id, itemName: item, dueOn: due)
+
+                            if let complete = json["completed"] as? Bool {
+                                if complete == true {
+                                    item.setComplete()
+                                }
+                            }
                             items.append(item)
                         }
                     }

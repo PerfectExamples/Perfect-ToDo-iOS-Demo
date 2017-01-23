@@ -12,6 +12,7 @@ class ItemCell: UITableViewCell {
 
     @IBOutlet weak var itemName: UILabel!
     @IBOutlet weak var dueDate: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,6 +36,14 @@ class ItemCell: UITableViewCell {
             self.dueDate.text? = "Due: " + formatter.string(from: date)
         } else {
             self.dueDate.text? = ""
+        }
+        
+        if item.completed {
+            statusLabel.text? = "Complete"
+            statusLabel.textColor = .green
+        } else {
+            statusLabel.text? = "Incomplete"
+            statusLabel.textColor = .red
         }
     }
 }
