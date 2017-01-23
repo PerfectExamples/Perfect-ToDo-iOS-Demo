@@ -29,8 +29,7 @@ server.addRoutes(authJSONRoutes)
 
 // Set the connection properties for the MySQL Server
 // Change to suit your specific environment
-//MySQLConnector.host		= "127.0.0.1"
-MySQLConnector.host = "dbhost"
+MySQLConnector.host		= "127.0.0.1"
 MySQLConnector.username	= "perfect"
 MySQLConnector.password	= "perfect"
 MySQLConnector.database	= "perfect_testing"

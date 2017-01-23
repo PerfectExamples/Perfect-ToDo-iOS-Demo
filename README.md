@@ -58,20 +58,24 @@ The master branch of this project currently compiles with **Xcode 8.2** or the *
 
 ## Building & Running
 
-The following will clone and build an empty starter project and launch the server on port 8080 and 8181.
+Before building the API, you must setup a MySQL Database and provide connection information for it in Perfect-ToDo-iOS-Demo/Perfect-ToDo-API/Sources/main.swift
+
+The following will clone and build the backend API and launch the server on host 0.0.0.0 and port 8181. The iOS App is configured by default to connect to this host on this port locally. If you change it here, you must also change it in the iOS Project's Config.swift file. 
 
 ```
 git clone [Repo Address Here]
-cd MultipleServerInstances
+cd Perfect-ToDo-iOS-Demo/Perfect-ToDo-API
 swift build
-.build/debug/MultipleServerInstances
+.build/debug/ToDo-API
 ```
 
 You should see the following output:
 
 ```
-[INFO] Starting HTTP server Public API on 0.0.0.0:8080
-[INFO] Starting HTTP server Private API on 0.0.0.0:8181
+[INFO] Running setup: todo_items
+[INFO] Running setup: users
+[INFO] Running setup: tokens
+[INFO] Starting HTTP server  on 0.0.0.0:8181
 ```
 
 This means the servers are running and waiting for connections. Access the public API routes at [http://localhost:8080/](http://127.0.0.1:8080/) and the private API routes at [http://localhost:8181/](http://127.0.0.1:8181/). Hit control-c to terminate the server.
