@@ -274,6 +274,8 @@ If anything is unauthorized, the API will produce a 401 Unauthorized error. In t
 
 Current the iOS app supports user registration, login, ToDo item browsing, ToDo item deletion/mark complete/mark incomplete (swipe for actions), and ToDo item creation.
 
+Because API calls through `NSURLSession` are asynchronous, it is important to note the use of KVO notifications for UI updates, which also must be explicitly sent to the main thread, otherwise crashes will ensue. 
+
 ## Issues
 
 We are transitioning to using JIRA for all bugs and support related issues, therefore the GitHub issues has been disabled.
