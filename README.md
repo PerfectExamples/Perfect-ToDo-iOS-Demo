@@ -91,7 +91,7 @@ You should see the following output:
 [INFO] Starting HTTP server  on 0.0.0.0:8181
 ```
 
-This means the servers are running and waiting for connections. Access the public API routes at [http://localhost:8080/](http://127.0.0.1:8080/) and the private API routes at [http://localhost:8181/](http://127.0.0.1:8181/). Hit control-c to terminate the server.
+This means the API is running and waiting for connections.
 
 ### IMPORTANT NOTE ABOUT USING XCODE WITH THE API
 
@@ -109,7 +109,7 @@ Open the project, change the signing identity in the project settings to your ow
 
 ## Testing
 
-The public API routes are located at [http://localhost:8181/api/v1](http://127.0.0.1:8181/api/v1) and are:
+The public API routes are located at [http://0.0.0.0:8181/api/v1](http://0.0.0.0:8181/api/v1) and are:
 
 #### Public
 
