@@ -15,7 +15,7 @@ class RemoteUser {
     private var _password: String
     private var _currentToken: String? {
         didSet {
-            print("Token was Set: \(_currentToken)")
+            print("Token was Set: \(String(describing: _currentToken))")
             NotificationCenter.default.post(Notification(name: .tokenSet))
         }
     }
