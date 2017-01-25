@@ -45,9 +45,9 @@ In this example, we've used a ToDo list for the demo
 
 The objects are separated by function:
 
-- Shipment is the model
-- ShipmentManager interacts with the database through MySQLStORM
-- Shipments uses ShipmentManager to produce JSON for the handlers
+- ToDoItem is the model
+- ToDoManager interacts with the database through MySQLStORM
+- ToDoItems uses the ToDoManager to produce JSON for the handlers
 - Handers contains the functions that the server uses to respond to requests
 - Database & PrivateAuth are helpers for setup and demo
 
