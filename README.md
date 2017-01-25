@@ -39,9 +39,9 @@
 </a>
 </p>
 
-This repository holds a project designed to show you how to setup and use multiple server instances. 
+This repository holds a project designed to show you how to setup and use a Perfect API with iOS. 
 
-In this example, you are designing an API for a shipping company, when you realize that you need both a private and public API. One for your staff to use to add and modify shipments, and one for customers or third party software to use to track it. 
+In this example, we've used a ToDo list for the demo
 
 The objects are separated by function:
 
