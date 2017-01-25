@@ -46,7 +46,7 @@ In this example, you are designing an API for a shipping company, when you reali
 The objects are separated by function:
 
 - Shipment is the model
-- ShipmentManager interacts with the database through SQLiteStORM
+- ShipmentManager interacts with the database through MySQLStORM
 - Shipments uses ShipmentManager to produce JSON for the handlers
 - Handers contains the functions that the server uses to respond to requests
 - Database & PrivateAuth are helpers for setup and demo
