@@ -57,6 +57,7 @@ authenticationConfig.exclude("/api/v1/register")
 // add routes to be checked for auth
 authenticationConfig.include("/api/v1/count")
 authenticationConfig.include("/api/v1/get/all")
+authenticationConfig.include("/api/v1/create")
 authenticationConfig.include("/api/v1/update")
 authenticationConfig.include("/api/v1/delete")
 
