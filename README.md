@@ -97,7 +97,7 @@ This means the API is running and waiting for connections.
 
 If you choose to generate an Xcode Project, you **MUST** change to the executable target **AND** setup a custom working directory for its scheme in order for the database to create and work properly. 
 
-![Proper Xcode Setup](https://github.com/rymcol/Perfect-ToDo-iOS-Demo/raw/master/Perfect-ToDo-API/Supporting/xcode.png)
+![Proper Xcode Setup](https://github.com/PerfectExamples/Perfect-ToDo-iOS-Demo/raw/master/Perfect-ToDo-API/Supporting/xcode.png)
 
 ## Before Building the iOS App
 
