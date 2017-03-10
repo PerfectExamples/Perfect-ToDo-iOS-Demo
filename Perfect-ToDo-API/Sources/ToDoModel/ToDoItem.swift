@@ -41,7 +41,7 @@ public class ToDoItem: MySQLStORM {
     }
     
     func setDueDate(_ date: Date) {
-        due = getSQLDateTime(date)
+        due = date.sqlDateTime()
     }
     
     func removeDueDate() {

@@ -111,7 +111,7 @@ public struct ToDoManager {
         }
         
         let objCompletion = obj.isCompleted ? 1: 0
-        let objDate = obj.dueDate == nil ? "NULL": getSQLDateTime(obj.dueDate!)
+        let objDate = obj.dueDate == nil ? "NULL": obj.dueDate!.sqlDateTime()
         
         do {
             try obj.update(cols: ["completed", "item", "due"], params: [objCompletion, "\(obj.item)", objDate], idName: "id", idValue: obj.id)
