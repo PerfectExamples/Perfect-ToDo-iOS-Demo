@@ -76,7 +76,7 @@ class RemoteUser {
             
         print("Registering user: \(_username) with password: \(_password)")
         
-        let urlPath = "\(apiEndpoint)/v1/register/?username=\(_username)&password=\(_password)"
+        let urlPath = "\(apiEndpoint)/v1/register"
         guard let endpoint = URL(string: urlPath) else {
             print("Error creating endpoint")
             return
@@ -84,6 +84,7 @@ class RemoteUser {
         var request = URLRequest(url: endpoint)
         request.timeoutInterval = 3
         request.httpMethod = "POST"
+        request.httpBody = "username=\(_username)&password=\(_password)".data(using: .utf8)
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
