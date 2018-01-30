@@ -1,0 +1,156 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "0D6C6FFB168828CC288E2765CC7A939DF5D94B31",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "5DE71891E68481B19F14057D90BF987D8451F5BA" : 9223372036854775807,
+    "7E7C1062562B886ABFA1C65C1E929E1339657116" : 9223372036854775807,
+    "735A06A83BD3E78D8C3B53C09F33A6FB7CEBF8E1" : 9223372036854775807,
+    "C4127C9B9C8FDF608B532AD72407863CE2797629" : 9223372036854775807,
+    "615FD99B652E80AC2E813EEEE7964BA10A9886D5" : 9223372036854775807,
+    "A9A67CBB41898084F22D1A92AEF6023DBEEFE6C7" : 9223372036854775807,
+    "3B905509A4DD1F5305D27EF37A9F71F239F93941" : 9223372036854775807,
+    "DCD994A20FFF69E73D7DE28EB512BBF004934554" : 9223372036854775807,
+    "A9EECFF9405C7376AE51E27811238F18AAFC7246" : 9223372036854775807,
+    "99295D61D988E90A59977F26C2E0BB063804DE30" : 9223372036854775807,
+    "0807368968AD22B966EB2C37D1BD70A25DE4DBD7" : 9223372036854775807,
+    "30B5D7023EC2CE816BA1191FB8D486529915F14F" : 9223372036854775807,
+    "6F1260245BD69EFA9A05D126763C86280510C6E1" : 9223372036854775807,
+    "9197B75B1BC29921D6E3B1CCDC2B258350009F3A" : 9223372036854775807,
+    "7A6E86399764EA793385C76541C62266A3CFE230" : 9223372036854775807,
+    "A47270401C4E12170692FDEB5A90EE8AC80F500F" : 9223372036854775807,
+    "E2306DAE0C98D148736A05084B6FAB44F03B4909" : 9223372036854775807,
+    "0D6C6FFB168828CC288E2765CC7A939DF5D94B31" : 9223372036854775807,
+    "B123C9ACF68A2BF01173B652DA8ABD73F990D1DE" : 9223372036854775807,
+    "D29B450053EFE7F16640D64672B63711A39399E1" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "83DC14E9-077F-40AD-9BCC-86BD0A0B4C86",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "5DE71891E68481B19F14057D90BF987D8451F5BA" : "Perfect-ToDo-iOS-Demo\/Perfect-ToDo-API\/.build\/checkouts\/Perfect-Turnstile-MySQL.git--3736162348952951147\/",
+    "7E7C1062562B886ABFA1C65C1E929E1339657116" : "Perfect-ToDo-iOS-Demo\/Perfect-ToDo-API\/.build\/checkouts\/Turnstile.git-2443676010155639616\/",
+    "735A06A83BD3E78D8C3B53C09F33A6FB7CEBF8E1" : "Perfect-ToDo-iOS-Demo\/Perfect-ToDo-API\/.build\/checkouts\/Perfect-Logger.git--429101405906730625\/",
+    "C4127C9B9C8FDF608B532AD72407863CE2797629" : "Perfect-ToDo-iOS-Demo\/Perfect-ToDo-API\/.build\/checkouts\/Perfect-HTTPServer.git--6671958091389663080\/",
+    "615FD99B652E80AC2E813EEEE7964BA10A9886D5" : "Perfect-ToDo-iOS-Demo\/Perfect-ToDo-API\/.build\/checkouts\/Perfect-Thread.git-6541237758607105655\/",
+    "A9A67CBB41898084F22D1A92AEF6023DBEEFE6C7" : "Perfect-ToDo-iOS-Demo\/Perfect-ToDo-API\/.build\/checkouts\/SwiftRandom.git--6412955993590123727\/",
+    "3B905509A4DD1F5305D27EF37A9F71F239F93941" : "Perfect-ToDo-iOS-Demo\/Perfect-ToDo-API\/.build\/checkouts\/Perfect-CURL.git-8858624468322681619\/",
+    "DCD994A20FFF69E73D7DE28EB512BBF004934554" : "Perfect-ToDo-iOS-Demo\/Perfect-ToDo-API\/.build\/checkouts\/Perfect-COpenSSL.git--4744624199947727386\/",
+    "A9EECFF9405C7376AE51E27811238F18AAFC7246" : "Perfect-ToDo-iOS-Demo\/Perfect-ToDo-API\/.build\/checkouts\/Perfect-Mustache.git-4271886153857801499\/",
+    "99295D61D988E90A59977F26C2E0BB063804DE30" : "Perfect-ToDo-iOS-Demo\/Perfect-ToDo-API\/.build\/checkouts\/SwiftSQL.git-8124242703783450981\/",
+    "0807368968AD22B966EB2C37D1BD70A25DE4DBD7" : "Perfect-ToDo-iOS-Demo\/Perfect-ToDo-API\/.build\/checkouts\/SwiftString.git-1364241159374428423\/",
+    "30B5D7023EC2CE816BA1191FB8D486529915F14F" : "Perfect-ToDo-iOS-Demo\/Perfect-ToDo-API\/.build\/checkouts\/MySQL-StORM.git-3054102240623951208\/",
+    "6F1260245BD69EFA9A05D126763C86280510C6E1" : "Perfect-ToDo-iOS-Demo\/Perfect-ToDo-API\/.build\/checkouts\/Perfect-Net.git-3268755499654502659\/",
+    "9197B75B1BC29921D6E3B1CCDC2B258350009F3A" : "Perfect-ToDo-iOS-Demo\/Perfect-ToDo-API\/.build\/checkouts\/Perfect-HTTP.git--6392294032632002019\/",
+    "7A6E86399764EA793385C76541C62266A3CFE230" : "Perfect-ToDo-iOS-Demo\/Perfect-ToDo-API\/.build\/checkouts\/SwiftMoment.git--2912679366309029826\/",
+    "A47270401C4E12170692FDEB5A90EE8AC80F500F" : "Perfect-ToDo-iOS-Demo\/Perfect-ToDo-API\/.build\/checkouts\/StORM.git-6077292811663054913\/",
+    "E2306DAE0C98D148736A05084B6FAB44F03B4909" : "Perfect-ToDo-iOS-Demo\/Perfect-ToDo-API\/.build\/checkouts\/PerfectLib.git-3712999737848873669\/",
+    "0D6C6FFB168828CC288E2765CC7A939DF5D94B31" : "Perfect-ToDo-iOS-Demo\/",
+    "B123C9ACF68A2BF01173B652DA8ABD73F990D1DE" : "Perfect-ToDo-iOS-Demo\/Perfect-ToDo-API\/.build\/checkouts\/Perfect-MySQL.git-4976130768219902098\/",
+    "D29B450053EFE7F16640D64672B63711A39399E1" : "Perfect-ToDo-iOS-Demo\/Perfect-ToDo-API\/.build\/checkouts\/Turnstile-Perfect.git-2479001266429089274\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "ToDO-Backend",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Perfect-ToDo-API\/ToDO-Backend.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Volumes\/Developer\/Perfect-Examples\/Perfect-ToDo-iOS-Demo\/Perfect-ToDo-API\/.build\/repositories\/SwiftString.git-1364241159374428423",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0807368968AD22B966EB2C37D1BD70A25DE4DBD7"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:rymcol\/Perfect-ToDo-iOS-Demo.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0D6C6FFB168828CC288E2765CC7A939DF5D94B31"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/SwiftORM\/MySQL-StORM.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "30B5D7023EC2CE816BA1191FB8D486529915F14F"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Volumes\/Developer\/Perfect-Examples\/Perfect-ToDo-iOS-Demo\/Perfect-ToDo-API\/.build\/repositories\/Perfect-CURL.git-8858624468322681619",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3B905509A4DD1F5305D27EF37A9F71F239F93941"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/PerfectlySoft\/Perfect-Turnstile-MySQL.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5DE71891E68481B19F14057D90BF987D8451F5BA"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/PerfectlySoft\/Perfect-Thread.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "615FD99B652E80AC2E813EEEE7964BA10A9886D5"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Volumes\/Developer\/Perfect-Examples\/Perfect-ToDo-iOS-Demo\/Perfect-ToDo-API\/.build\/repositories\/Perfect-Net.git-3268755499654502659",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6F1260245BD69EFA9A05D126763C86280510C6E1"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/PerfectlySoft\/Perfect-Logger.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "735A06A83BD3E78D8C3B53C09F33A6FB7CEBF8E1"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Volumes\/Developer\/Perfect-Examples\/Perfect-ToDo-iOS-Demo\/Perfect-ToDo-API\/.build\/repositories\/SwiftMoment.git--2912679366309029826",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7A6E86399764EA793385C76541C62266A3CFE230"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Volumes\/Developer\/Perfect-Examples\/Perfect-ToDo-iOS-Demo\/Perfect-ToDo-API\/.build\/repositories\/Turnstile.git-2443676010155639616",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7E7C1062562B886ABFA1C65C1E929E1339657116"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Volumes\/Developer\/Perfect-Examples\/Perfect-ToDo-iOS-Demo\/Perfect-ToDo-API\/.build\/repositories\/Perfect-HTTP.git--6392294032632002019",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9197B75B1BC29921D6E3B1CCDC2B258350009F3A"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/rymcol\/SwiftSQL.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "99295D61D988E90A59977F26C2E0BB063804DE30"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/SwiftORM\/StORM.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A47270401C4E12170692FDEB5A90EE8AC80F500F"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Volumes\/Developer\/Perfect-Examples\/Perfect-ToDo-iOS-Demo\/Perfect-ToDo-API\/.build\/repositories\/SwiftRandom.git--6412955993590123727",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A9A67CBB41898084F22D1A92AEF6023DBEEFE6C7"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/PerfectlySoft\/Perfect-Mustache.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A9EECFF9405C7376AE51E27811238F18AAFC7246"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Volumes\/Developer\/Perfect-Examples\/Perfect-ToDo-iOS-Demo\/Perfect-ToDo-API\/.build\/repositories\/Perfect-MySQL.git-4976130768219902098",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B123C9ACF68A2BF01173B652DA8ABD73F990D1DE"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Volumes\/Developer\/Perfect-Examples\/Perfect-ToDo-iOS-Demo\/Perfect-ToDo-API\/.build\/repositories\/Perfect-HTTPServer.git--6671958091389663080",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C4127C9B9C8FDF608B532AD72407863CE2797629"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/PerfectSideRepos\/Turnstile-Perfect.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D29B450053EFE7F16640D64672B63711A39399E1"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Volumes\/Developer\/Perfect-Examples\/Perfect-ToDo-iOS-Demo\/Perfect-ToDo-API\/.build\/repositories\/Perfect-COpenSSL.git--4744624199947727386",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DCD994A20FFF69E73D7DE28EB512BBF004934554"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/PerfectlySoft\/PerfectLib.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E2306DAE0C98D148736A05084B6FAB44F03B4909"
+    }
+  ]
+}
