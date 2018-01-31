@@ -35,19 +35,20 @@ class RemoteUser {
         
         print("Logging in user: \(_username) with password: \(_password)")
         
-        let urlPath = "\(apiEndpoint)/v1/login/?username=\(_username)&password=\(_password)"
+        let urlPath = "\(apiEndpoint)/v1/login?" + ("username=\(_username)&password=\(_password)".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? "fault")
         guard let endpoint = URL(string: urlPath) else {
             print("Error creating endpoint")
             return
         }
         var request = URLRequest(url: endpoint)
-        request.timeoutInterval = 3
+        request.timeoutInterval = 10
         request.httpMethod = "POST"
 
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
-            if error != nil {
+            if let err = error {
                 NotificationCenter.default.post(Notification(name: .apiServerUnreachable))
+              debugPrint(urlPath, err.localizedDescription)
             }
             
             do {
@@ -76,19 +77,20 @@ class RemoteUser {
             
         print("Registering user: \(_username) with password: \(_password)")
         
-        let urlPath = "\(apiEndpoint)/v1/register/?username=\(_username)&password=\(_password)"
+        let urlPath = "\(apiEndpoint)/v1/register?" + ("username=\(_username)&password=\(_password)".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? "fault")
         guard let endpoint = URL(string: urlPath) else {
             print("Error creating endpoint")
             return
         }
         var request = URLRequest(url: endpoint)
-        request.timeoutInterval = 3
+        request.timeoutInterval = 30
         request.httpMethod = "POST"
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
-            if error != nil {
+            if let err = error {
                 NotificationCenter.default.post(Notification(name: .apiServerUnreachable))
+              debugPrint(urlPath, err.localizedDescription)
             }
             
             do {

@@ -8,4 +8,4 @@
 
 import Foundation
 
-let apiEndpoint = "http://0.0.0.0:8181/api"
+let apiEndpoint = "http://127.0.0.1:8181/api"

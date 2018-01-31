@@ -47,8 +47,9 @@ class DataService {
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
-            if error != nil {
+            if let err = error {
                 NotificationCenter.default.post(Notification(name: .apiServerUnreachable))
+              debugPrint(urlPath, err.localizedDescription)
             }
             
             do {
